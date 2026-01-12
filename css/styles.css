@@ -11557,3 +11557,50 @@ section#contact form#contactForm :-ms-input-placeholder {
   align-items: baseline;
 }
 .gb-wish .topline .time{ margin-left: auto; }
+/* ===== Wish cards đẹp ===== */
+#gbList{ margin-top: 18px; }
+
+.gb-wish{
+  background:#fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 12px 26px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.06);
+  margin-bottom: 14px;
+  display:flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.gb-wish .left{ min-width: 0; }
+
+.gb-wish .name{
+  font-weight: 900;
+  color:#7b1e1e;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.gb-wish .msg{
+  color:#444;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.gb-wish .time{
+  color:#999;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 10px;
+  align-self: flex-start;
+}
+
+@media (max-width: 640px){
+  .gb-wish{
+    flex-direction: column;
+  }
+  .gb-wish .time{
+    margin-left: 0;
+  }
+}
