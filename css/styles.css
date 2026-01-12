@@ -11550,3 +11550,10 @@ section#contact form#contactForm :-ms-input-placeholder {
     grid-template-columns: 1fr !important;
   }
 }
+.gb-wish .topline{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.gb-wish .topline .time{ margin-left: auto; }
