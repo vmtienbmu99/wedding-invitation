@@ -11710,3 +11710,22 @@ section#contact form#contactForm :-ms-input-placeholder {
 @media (max-width: 768px){
   .wedding-footer{ font-size: 26px; }
 }
+/* ===== NỀN ẢNH cho khu vực Sổ lưu bút + Mừng cưới (chắc chắn) ===== */
+#guestbook, #gift{
+  position: relative;
+  background: url("../assets/img/gallery/07.jpg") center/cover no-repeat !important;
+}
+
+/* lớp phủ để chữ dễ đọc */
+#guestbook::before, #gift::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(255,255,255,.80);
+}
+
+/* nội dung nổi lên trên lớp phủ */
+#guestbook > .container, #gift > .container{
+  position: relative;
+  z-index: 1;
+}
