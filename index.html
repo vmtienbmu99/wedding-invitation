@@ -185,14 +185,17 @@
             </div>
         
             <div class="guestbook-wrap">
-              <div class="guestbook-form">
-                <input id="gbName" type="text" placeholder="Nhập tên của bạn *">
-                <textarea id="gbMsg" rows="4" placeholder="Nhập lời chúc của bạn *"></textarea>
-        
-                <div class="guestbook-actions">
-                  <button id="gbSend" type="button">GỬI LỜI CHÚC</button>
-                </div>
-                <div id="gbStatus" class="guestbook-status"></div>
+                <div class="guestbook-form">
+                  <div class="gb-row">
+                    <input id="gbName" type="text" placeholder="Nhập tên của bạn *">
+                    <textarea id="gbMsg" rows="4" placeholder="Nhập lời chúc của bạn *"></textarea>
+                  </div>
+                
+                  <div class="guestbook-actions">
+                    <button id="gbSend" type="button">GỬI LỜI CHÚC</button>
+                  </div>
+                
+                  <div id="gbStatus" class="guestbook-status"></div>
               </div>
         
               <div class="guestbook-list" id="gbList"></div>
@@ -615,14 +618,16 @@
         
           function render(items){
             elList.innerHTML = items.map(it => `
-              <div class="gb-wish">
-                <div class="left">
-                  <div class="name">${escapeHtml(it.name || "")}</div>
-                  <div class="msg">${escapeHtml(it.message || "")}</div>
+                <div class="gb-wish">
+                  <div class="left">
+                    <div class="topline">
+                      <div class="name">${escapeHtml(it.name || "")}</div>
+                      <div class="time">${fmtTime(it.time)}</div>
+                    </div>
+                    <div class="msg">${escapeHtml(it.message || "")}</div>
+                  </div>
                 </div>
-                <div class="time">${fmtTime(it.time)}</div>
-              </div>
-            `).join("");
+              `).join("");
           }
         
           function escapeHtml(s){
