@@ -11677,16 +11677,15 @@ section#contact form#contactForm :-ms-input-placeholder {
 /* ===== Background cho khu vực Sổ lưu bút + Mừng cưới ===== */
 .bg-section-07{
   position: relative;
-  background: url("assets/img/gallery/07.jpg") center/cover no-repeat;
+  background: url("../assets/img/gallery/07.jpg") center/cover no-repeat;
   padding: 60px 0;
 }
 
-/* Lớp phủ để chữ dễ đọc */
 .bg-section-07::before{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(255,255,255,.80); /* tăng/giảm 0.7~0.9 tuỳ ảnh */
+  background: rgba(255,255,255,.80);
 }
 
 .bg-section-07 > *{
@@ -11694,7 +11693,6 @@ section#contact form#contactForm :-ms-input-placeholder {
   z-index: 1;
 }
 
-/* bỏ nền xám của bg-light bên trong để nhìn thấy background */
 .bg-section-07 .bg-light{
   background: transparent !important;
 }
