@@ -718,26 +718,46 @@
           Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!
         </footer>
         <script>
-          document.querySelectorAll('a.nav-link[href^="#"]').forEach(a => {
-            a.addEventListener('click', function (e) {
-              const id = this.getAttribute('href');
-              const el = document.querySelector(id);
-              if (!el) return;
-              e.preventDefault();
+        (function () {
+          const OFFSET = 90; // chiều cao navbar, chỉnh 70-110 tùy giao diện
         
-              el.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
+          function getHashFromHref(href) {
+            try {
+              // hỗ trợ cả #id và /path#id và full URL#id
+              const u = new URL(href, window.location.href);
+              return u.hash; // "#guestbook"
+            } catch (e) {
+              // fallback nếu href lạ
+              const i = href.indexOf("#");
+              return i >= 0 ? href.slice(i) : "";
+            }
+          }
         
-              // đóng menu trên mobile (nếu có)
-              const navToggler = document.querySelector('.navbar-toggler');
-              const navCollapse = document.querySelector('#navbarResponsive');
-              if (navToggler && navCollapse && navCollapse.classList.contains('show')) {
-                navToggler.click();
-              }
-            });
+          document.addEventListener("click", function (e) {
+            const a = e.target.closest('a[href*="#"]');
+            if (!a) return;
+        
+            const hash = getHashFromHref(a.getAttribute("href"));
+            if (!hash || hash === "#") return;
+        
+            // chỉ xử lý nếu hash trỏ tới element trong trang hiện tại
+            const el = document.querySelector(hash);
+            if (!el) return;
+        
+            e.preventDefault();
+        
+            const top = el.getBoundingClientRect().top + window.pageYOffset - OFFSET;
+            window.scrollTo({ top, behavior: "smooth" });
+        
+            // cập nhật URL hash nhưng không nhảy
+            history.pushState(null, "", hash);
+        
+            // đóng menu mobile nếu đang mở (Bootstrap)
+            const toggler = document.querySelector(".navbar-toggler");
+            const collapse = document.querySelector("#navbarResponsive");
+            if (toggler && collapse && collapse.classList.contains("show")) toggler.click();
           });
+        })();
         </script>
     </body>
 </html>
