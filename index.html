@@ -617,19 +617,25 @@
           }
         
           function render(items){
-            elList.innerHTML = items.map(it => `
-                <div class="gb-wish">
-                  <div class="left">
-                    <div class="topline">
-                      <div class="name">${escapeHtml(it.name || "")}</div>
-                      <div class="time">${fmtTime(it.time)}</div>
+              elList.innerHTML = items.map(it => {
+                const name = (it.name || "").trim();
+                const initial = name ? name[0].toUpperCase() : "❤";
+                return `
+                  <div class="wish-card">
+                    <div class="wish-avatar">${escapeHtml(initial)}</div>
+            
+                    <div class="wish-body">
+                      <div class="wish-top">
+                        <div class="wish-name">${escapeHtml(name || "Ẩn danh")}</div>
+                        <div class="wish-time">${fmtTime(it.time)}</div>
+                      </div>
+                      <div class="wish-msg">${escapeHtml(it.message || "")}</div>
                     </div>
-                    <div class="msg">${escapeHtml(it.message || "")}</div>
                   </div>
-                </div>
-              `).join("");
-          }
-        
+                `;
+              }).join("");
+            }
+            
           function escapeHtml(s){
             return String(s).replace(/[&<>"']/g, m => ({
               "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
