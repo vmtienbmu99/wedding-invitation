@@ -114,6 +114,33 @@
             <div class="thumbs" id="thumbs"></div>
           </div>
         </div>
+        <!-- Wish-->
+        <section class="page-section bg-light" id="guestbook">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="section-heading text-uppercase" style="color:#7b1e1e;">Sổ Lưu Bút</h2>
+              <h3 class="section-subheading text-muted">Gửi lời chúc đến cô dâu &amp; chú rể 💛</h3>
+            </div>
+        
+            <div class="guestbook-wrap">
+              <div class="guestbook-form">
+                <input id="gbName" type="text" placeholder="Nhập tên của bạn *">
+                <textarea id="gbMsg" rows="4" placeholder="Nhập lời chúc của bạn *"></textarea>
+        
+                <div class="guestbook-actions">
+                  <button id="gbSend" type="button">GỬI LỜI CHÚC</button>
+                </div>
+                <div id="gbStatus" class="guestbook-status"></div>
+              </div>
+        
+              <div class="guestbook-list" id="gbList"></div>
+        
+              <div class="text-center mt-3">
+                <button id="gbMore" class="gb-more" type="button">Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </section>        
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
@@ -176,69 +203,6 @@
                 </ul>
             </div>
         </section>
-        <!-- Team-->
-        <section class="page-section bg-light" id="team">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                            <h4>Diana Petersen</h4>
-                            <p class="text-muted">Lead Marketer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
-                </div>
-            </div>
-        </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Contact-->
         <section class="page-section" id="contact">
           <div class="container">
@@ -650,6 +614,86 @@
           // INIT
           renderOutsideGrid();
           renderThumbs();
-        </script>        
+        </script> 
+        <script>
+          const GB_API = "https://script.google.com/macros/s/AKfycbx6uKyTrrE9kx4wsW1dIon1RhnpH4Nba31AW2id_GzCeuI17L49pAUrdxjXKUncJQyw1Q/exec"; // dán URL Apps Script /exec vào đây
+          let gbLimit = 10;
+        
+          const elName = document.getElementById("gbName");
+          const elMsg = document.getElementById("gbMsg");
+          const elSend = document.getElementById("gbSend");
+          const elStatus = document.getElementById("gbStatus");
+          const elList = document.getElementById("gbList");
+          const elMore = document.getElementById("gbMore");
+        
+          function fmtTime(t){
+            try{
+              const d = new Date(t);
+              return d.toLocaleString("vi-VN");
+            }catch(e){ return ""; }
+          }
+        
+          function render(items){
+            elList.innerHTML = items.map(it => `
+              <div class="wish">
+                <div class="left">
+                  <div class="name">${escapeHtml(it.name || "")}</div>
+                  <div class="msg">${escapeHtml(it.message || "")}</div>
+                </div>
+                <div class="time">${fmtTime(it.time)}</div>
+              </div>
+            `).join("");
+          }
+        
+          function escapeHtml(s){
+            return String(s).replace(/[&<>"']/g, m => ({
+              "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+            }[m]));
+          }
+        
+          async function loadWishes(){
+            const url = `${GB_API}?action=list&limit=${gbLimit}`;
+            const res = await fetch(url);
+            const data = await res.json();
+            if (data.ok) render(data.items || []);
+          }
+        
+          async function sendWish(){
+            const name = (elName.value || "").trim();
+            const message = (elMsg.value || "").trim();
+        
+            if(!name || !message){
+              elStatus.textContent = "Vui lòng nhập tên và lời chúc.";
+              return;
+            }
+        
+            elSend.disabled = true;
+            elStatus.textContent = "Đang gửi...";
+        
+            const res = await fetch(GB_API, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify({ name, message, ua: navigator.userAgent })
+            });
+        
+            const data = await res.json();
+            if(data.ok){
+              elStatus.textContent = "Đã gửi lời chúc 💛";
+              elMsg.value = "";
+              gbLimit = Math.max(gbLimit, 10);
+              await loadWishes();
+            }else{
+              elStatus.textContent = "Gửi thất bại: " + (data.error || "Unknown");
+            }
+        
+            elSend.disabled = false;
+          }
+        
+          elSend.addEventListener("click", sendWish);
+          elMore.addEventListener("click", async () => { gbLimit += 10; await loadWishes(); });
+        
+          // load lần đầu
+          loadWishes();
+        </script>
     </body>
 </html>
