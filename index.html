@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Happy Wedding</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Album ảnh cưới</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#gallery">Ảnh cưới</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Kỉ niệm</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Sổ lưu bút</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Sổ lưu bút</a></li>
@@ -87,45 +87,33 @@
           <div class="container">
             <div class="text-center">
               <h2 class="section-heading text-uppercase">Album Ảnh Cưới</h2>
-              <h3 class="section-subheading text-muted">Anh San &amp; Quỳnh</h3>
             </div>
         
-            <div class="row g-3" id="galleryGrid">
-              <div class="col-6 col-lg-3">
-                <a class="gallery-item" href="assets/img/gallery/01.jpg" data-pswp-width="2000" data-pswp-height="3000">
-                  <img class="img-fluid rounded" src="assets/img/gallery/01.jpg" alt="Ảnh cưới 01">
-                </a>
-              </div>
-        
-              <div class="col-6 col-lg-3">
-                <a class="gallery-item" href="assets/img/gallery/02.jpg" data-pswp-width="2000" data-pswp-height="3000">
-                  <img class="img-fluid rounded" src="assets/img/gallery/02.jpg" alt="Ảnh cưới 02">
-                </a>
-              </div>
-        
-              <div class="col-6 col-lg-3">
-                <a class="gallery-item" href="assets/img/gallery/03.jpg" data-pswp-width="2000" data-pswp-height="3000">
-                  <img class="img-fluid rounded" src="assets/img/gallery/03.jpg" alt="Ảnh cưới 03">
-                </a>
-              </div>
-        
-              <div class="col-6 col-lg-3">
-                <a class="gallery-item gallery-more" href="assets/img/gallery/04.jpg" data-pswp-width="2000" data-pswp-height="3000">
-                  <img class="img-fluid rounded" src="assets/img/gallery/04.jpg" alt="Ảnh cưới 04">
-                  <div class="more-overlay">
-                    <span class="more-text" id="moreCount">+2</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-        
-            <!-- Ảnh còn lại để popup vẫn duyệt được -->
-            <div class="d-none">
-              <a class="gallery-item" href="assets/img/gallery/05.jpg" data-pswp-width="2000" data-pswp-height="3000"></a>
-              <a class="gallery-item" href="assets/img/gallery/06.jpg" data-pswp-width="2000" data-pswp-height="3000"></a>
-            </div>
+            <!-- Grid ngoài -->
+            <div class="album-grid" id="albumGrid"></div>
           </div>
         </section>
+        
+        <!-- Modal viewer -->
+        <div class="viewer" id="viewer" aria-hidden="true">
+          <div class="viewer__overlay" data-close></div>
+        
+          <div class="viewer__counter" id="viewerCounter">1 / 1</div>
+          <button class="viewer__close" type="button" aria-label="Đóng" data-close>✕</button>
+        
+          <button class="viewer__arrow viewer__arrow--left" type="button" aria-label="Trước" id="prevBtn">‹</button>
+          <button class="viewer__arrow viewer__arrow--right" type="button" aria-label="Sau" id="nextBtn">›</button>
+        
+          <div class="viewer__stage">
+            <div class="viewer__frame">
+              <img class="viewer__main" id="viewerMain" src="" alt="Ảnh cưới" />
+            </div>
+          </div>
+        
+          <div class="viewer__thumbbar">
+            <div class="thumbs" id="thumbs"></div>
+          </div>
+        </div>
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
@@ -561,22 +549,107 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script type="module">
-          import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+        <script>
+          const images = [
+            "assets/img/gallery/01.jpg",
+            "assets/img/gallery/02.jpg",
+            "assets/img/gallery/03.jpg",
+            "assets/img/gallery/04.jpg",
+            "assets/img/gallery/05.jpg",
+            "assets/img/gallery/06.jpg"
+          ];
         
-          const lightbox = new PhotoSwipeLightbox({
-            gallery: '#gallery',
-            children: 'a.gallery-item',
-            pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
+          const albumGrid = document.getElementById("albumGrid");
+          const viewer = document.getElementById("viewer");
+          const viewerMain = document.getElementById("viewerMain");
+          const viewerCounter = document.getElementById("viewerCounter");
+          const thumbsEl = document.getElementById("thumbs");
+          const prevBtn = document.getElementById("prevBtn");
+          const nextBtn = document.getElementById("nextBtn");
+        
+          let currentIndex = 0;
+        
+          function renderOutsideGrid() {
+            const show = Math.min(4, images.length);
+            albumGrid.innerHTML = "";
+        
+            for (let i = 0; i < show; i++) {
+              const card = document.createElement("div");
+              card.className = "album-card";
+              card.dataset.index = String(i);
+        
+              card.innerHTML = `
+                <img src="${images[i]}" alt="Ảnh ${i+1}" />
+                ${i === 3 && images.length > 4 ? `<div class="more-badge">+${images.length - 4}</div>` : ``}
+              `;
+        
+              card.addEventListener("click", () => openViewer(i));
+              albumGrid.appendChild(card);
+            }
+          }
+        
+          function renderThumbs() {
+            thumbsEl.innerHTML = "";
+            images.forEach((src, idx) => {
+              const t = document.createElement("div");
+              t.className = "thumb";
+              t.dataset.index = String(idx);
+              t.innerHTML = `<img src="${src}" alt="thumb ${idx+1}" />`;
+              t.addEventListener("click", () => setIndex(idx, true));
+              thumbsEl.appendChild(t);
+            });
+          }
+        
+          function updateActiveThumb(scrollIntoView = false) {
+            const all = thumbsEl.querySelectorAll(".thumb");
+            all.forEach(el => el.classList.remove("is-active"));
+            const active = thumbsEl.querySelector(`.thumb[data-index="${currentIndex}"]`);
+            if (active) {
+              active.classList.add("is-active");
+              if (scrollIntoView) active.scrollIntoView({ behavior:"smooth", inline:"center", block:"nearest" });
+            }
+          }
+        
+          function setIndex(idx, scrollThumb = false) {
+            currentIndex = (idx + images.length) % images.length;
+            viewerMain.src = images[currentIndex];
+            viewerCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+            updateActiveThumb(scrollThumb);
+          }
+        
+          function openViewer(startIndex) {
+            viewer.classList.add("is-open");
+            viewer.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            setIndex(startIndex, true);
+          }
+        
+          function closeViewer() {
+            viewer.classList.remove("is-open");
+            viewer.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+          }
+        
+          function next() { setIndex(currentIndex + 1, true); }
+          function prev() { setIndex(currentIndex - 1, true); }
+        
+          prevBtn.addEventListener("click", prev);
+          nextBtn.addEventListener("click", next);
+        
+          viewer.addEventListener("click", (e) => {
+            if (e.target && e.target.matches("[data-close]")) closeViewer();
           });
         
-          lightbox.init();
+          window.addEventListener("keydown", (e) => {
+            if (!viewer.classList.contains("is-open")) return;
+            if (e.key === "Escape") closeViewer();
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+          });
         
-          // Tự set +N đúng số ảnh
-          const total = document.querySelectorAll('#gallery a.gallery-item').length;
-          const more = Math.max(0, total - 4);
-          const el = document.getElementById('moreCount');
-          if (el) el.textContent = more > 0 ? `+${more}` : '';
-        </script>
+          // INIT
+          renderOutsideGrid();
+          renderThumbs();
+        </script>        
     </body>
 </html>
