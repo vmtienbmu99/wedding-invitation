@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -560,5 +561,22 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script type="module">
+          import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+        
+          const lightbox = new PhotoSwipeLightbox({
+            gallery: '#gallery',
+            children: 'a.gallery-item',
+            pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
+          });
+        
+          lightbox.init();
+        
+          // Tự set +N đúng số ảnh
+          const total = document.querySelectorAll('#gallery a.gallery-item').length;
+          const more = Math.max(0, total - 4);
+          const el = document.getElementById('moreCount');
+          if (el) el.textContent = more > 0 ? `+${more}` : '';
+        </script>
     </body>
 </html>
