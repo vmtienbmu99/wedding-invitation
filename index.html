@@ -717,5 +717,27 @@
         <footer class="wedding-footer">
           Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!
         </footer>
+        <script>
+          document.querySelectorAll('a.nav-link[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+              const id = this.getAttribute('href');
+              const el = document.querySelector(id);
+              if (!el) return;
+              e.preventDefault();
+        
+              el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+        
+              // đóng menu trên mobile (nếu có)
+              const navToggler = document.querySelector('.navbar-toggler');
+              const navCollapse = document.querySelector('#navbarResponsive');
+              if (navToggler && navCollapse && navCollapse.classList.contains('show')) {
+                navToggler.click();
+              }
+            });
+          });
+        </script>
     </body>
 </html>
