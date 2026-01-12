@@ -11484,10 +11484,35 @@ section#contact form#contactForm :-ms-input-placeholder {
   .thumb{ width: 64px; height: 44px; }
   .viewer__stage{ padding: 70px 12px 150px; }
 }
-/* ===== Guestbook đẹp (match đúng class hiện tại) ===== */
-.guestbook-wrap{ max-width: 980px; margin: 0 auto; }
+/* ===== FORCE Guestbook inputs style (override everything) ===== */
+#guestbook .guestbook-form input#gbName,
+#guestbook .guestbook-form textarea#gbMsg{
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 100% !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 12px !important;
+  padding: 14px 14px !important;
+  font-size: 16px !important;
+  outline: none !important;
+  background: #fff !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06) !important;
+  margin: 0 !important;
+}
 
-.guestbook-form{
+#guestbook .guestbook-form textarea#gbMsg{
+  resize: none !important;
+  min-height: 120px !important;
+}
+
+#guestbook .guestbook-form input#gbName:focus,
+#guestbook .guestbook-form textarea#gbMsg:focus{
+  border-color:#7b1e1e !important;
+  box-shadow: 0 0 0 4px rgba(123,30,30,.12) !important;
+}
+
+/* Layout 2 cột cho input + textarea */
+#guestbook .guestbook-form{
   background:#fff;
   border-radius: 18px;
   padding: 26px;
@@ -11495,74 +11520,33 @@ section#contact form#contactForm :-ms-input-placeholder {
   border: 1px solid rgba(0,0,0,.06);
 }
 
-.guestbook-form input, 
-.guestbook-form textarea{
-  width:100%;
-  border: 1px solid #e2e2e2 !important;
-  border-radius: 12px !important;
-  padding: 14px 14px !important;
-  font-size: 16px !important;
-  outline: none;
-  background:#fff;
-  box-shadow:none !important;
-  margin-top: 12px;
+#guestbook .guestbook-form .gb-row{
+  display:grid !important;
+  grid-template-columns: 1fr 1.6fr !important;
+  gap: 16px !important;
+  align-items: start !important;
 }
 
-.guestbook-form textarea{ resize:none; }
-
-.guestbook-form input:focus,
-.guestbook-form textarea:focus{
-  border-color:#7b1e1e !important;
-  box-shadow: 0 0 0 4px rgba(123,30,30,.12) !important;
+#guestbook .guestbook-actions{
+  display:flex !important;
+  justify-content:flex-end !important;
+  margin-top: 14px !important;
 }
 
-.guestbook-actions{
-  display:flex;
-  justify-content:flex-end;
-  margin-top: 14px;
-}
-
-#gbSend{
+#guestbook #gbSend{
   background:#7b1e1e !important;
   color:#fff !important;
   border:0 !important;
   border-radius:999px !important;
   padding: 12px 22px !important;
-  font-weight: 900;
-  letter-spacing:.4px;
-  box-shadow: 0 10px 24px rgba(123,30,30,.22);
+  font-weight: 900 !important;
+  letter-spacing:.4px !important;
+  box-shadow: 0 10px 24px rgba(123,30,30,.22) !important;
 }
 
-#gbStatus{
-  margin-top: 10px;
-  color:#7b1e1e;
-  font-weight: 700;
-  min-height: 22px;
-}
-
-.guestbook-list{ margin-top: 18px; }
-
-.gb-wish{
-  background:#fff;
-  border-radius: 14px;
-  padding: 16px 18px;
-  box-shadow: 0 12px 26px rgba(0,0,0,.08);
-  border: 1px solid rgba(0,0,0,.05);
-  margin-bottom: 14px;
-  display:flex;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-.gb-wish .name{ font-weight: 900; color:#7b1e1e; margin-bottom: 6px; }
-.gb-wish .msg{ color:#444; line-height: 1.45; white-space: pre-wrap; }
-.gb-wish .time{ color:#888; font-size: 13px; white-space: nowrap; margin-left: 10px; }
-
-.gb-more{
-  border: 1px solid #7b1e1e !important;
-  background: transparent !important;
-  color:#7b1e1e !important;
-  padding: 10px 18px !important;
-  border-radius: 999px !important;
-  font-weight: 900;
+/* Mobile */
+@media (max-width:768px){
+  #guestbook .guestbook-form .gb-row{
+    grid-template-columns: 1fr !important;
+  }
 }
