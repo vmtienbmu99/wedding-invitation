@@ -85,51 +85,43 @@
         <section class="page-section bg-light" id="gallery">
           <div class="container">
             <div class="text-center">
-              <h2 class="section-heading text-uppercase">Ảnh cưới</h2>
+              <h2 class="section-heading text-uppercase">Album Ảnh Cưới</h2>
               <h3 class="section-subheading text-muted">Anh San &amp; Quỳnh</h3>
             </div>
         
-            <div id="weddingCarousel" class="carousel slide" data-bs-ride="carousel">
-              <!-- Dots -->
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                <button type="button" data-bs-target="#weddingCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <div class="row g-3" id="galleryGrid">
+              <div class="col-6 col-lg-3">
+                <a class="gallery-item" href="assets/img/gallery/01.jpg" data-pswp-width="2000" data-pswp-height="3000">
+                  <img class="img-fluid rounded" src="assets/img/gallery/01.jpg" alt="Ảnh cưới 01">
+                </a>
               </div>
         
-              <!-- Slides -->
-              <div class="carousel-inner rounded shadow">
-                <div class="carousel-item active">
-                  <img src="assets/img/gallery/01.jpg" class="d-block w-100" alt="Ảnh cưới 1" style="max-height: 70vh; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/02.jpg" class="d-block w-100" alt="Ảnh cưới 2" style="max-height: 70vh; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/03.jpg" class="d-block w-100" alt="Ảnh cưới 3" style="max-height: 70vh; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/04.jpg" class="d-block w-100" alt="Ảnh cưới 4" style="max-height: 70vh; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/05.jpg" class="d-block w-100" alt="Ảnh cưới 5" style="max-height: 70vh; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/06.jpg" class="d-block w-100" alt="Ảnh cưới 6" style="max-height: 70vh; object-fit: cover;">
-                </div>
+              <div class="col-6 col-lg-3">
+                <a class="gallery-item" href="assets/img/gallery/02.jpg" data-pswp-width="2000" data-pswp-height="3000">
+                  <img class="img-fluid rounded" src="assets/img/gallery/02.jpg" alt="Ảnh cưới 02">
+                </a>
               </div>
-              <!-- Controls -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#weddingCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+        
+              <div class="col-6 col-lg-3">
+                <a class="gallery-item" href="assets/img/gallery/03.jpg" data-pswp-width="2000" data-pswp-height="3000">
+                  <img class="img-fluid rounded" src="assets/img/gallery/03.jpg" alt="Ảnh cưới 03">
+                </a>
+              </div>
+        
+              <div class="col-6 col-lg-3">
+                <a class="gallery-item gallery-more" href="assets/img/gallery/04.jpg" data-pswp-width="2000" data-pswp-height="3000">
+                  <img class="img-fluid rounded" src="assets/img/gallery/04.jpg" alt="Ảnh cưới 04">
+                  <div class="more-overlay">
+                    <span class="more-text" id="moreCount">+2</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+        
+            <!-- Ảnh còn lại để popup vẫn duyệt được -->
+            <div class="d-none">
+              <a class="gallery-item" href="assets/img/gallery/05.jpg" data-pswp-width="2000" data-pswp-height="3000"></a>
+              <a class="gallery-item" href="assets/img/gallery/06.jpg" data-pswp-width="2000" data-pswp-height="3000"></a>
             </div>
           </div>
         </section>
