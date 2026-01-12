@@ -11732,3 +11732,173 @@ section#contact form#contactForm :-ms-input-placeholder {
 @media (max-width: 768px){
   .wedding-footer{ font-size: 26px !important; }
 }
+/* ===== Happy Wedding (thay SERVICES) ===== */
+.happy-section{
+  background: #f7f2ee;
+}
+
+.happy-title{
+  font-family: "Dancing Script", cursive;
+  font-size: 56px;
+  font-weight: 700;
+  color: #7b1e1e;
+  text-transform: none !important;
+  margin-bottom: 30px;
+}
+
+.couple-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+.couple-card{
+  text-align: center;
+  padding: 10px 10px 0;
+}
+
+.avatar-wrap{
+  width: 260px;
+  height: 260px;
+  margin: 0 auto 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  border: 10px solid rgba(255,255,255,.9);
+  background: #fff;
+}
+
+.avatar{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.role{
+  font-size: 18px;
+  color: #333;
+  margin-top: 4px;
+}
+
+.name-script{
+  font-family: "Dancing Script", cursive;
+  font-size: 34px;
+  font-weight: 700;
+  color: #7b1e1e;
+  margin-top: 4px;
+}
+
+.parents{
+  margin-top: 18px;
+  line-height: 1.4;
+}
+
+.parents .label{
+  color:#555;
+  margin-bottom: 6px;
+}
+
+.parent-name{
+  font-weight: 700;
+  font-size: 18px;
+  color:#2b2b2b;
+}
+
+.addr{
+  margin-top: 12px;
+  color:#444;
+  font-size: 14px;
+}
+
+.ceremony{
+  text-align:center;
+  margin: 36px auto 18px;
+  max-width: 820px;
+}
+
+.ceremony-title{
+  letter-spacing: 2px;
+  color:#2b2b2b;
+  font-weight: 700;
+}
+
+.ceremony-place{
+  font-family: "Dancing Script", cursive;
+  font-size: 34px;
+  font-weight: 700;
+  color:#7b1e1e;
+  margin-top: 8px;
+}
+
+.ceremony-sub{
+  margin-top: 10px;
+  color:#2b2b2b;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.ceremony-time{
+  font-size: 42px;
+  font-weight: 900;
+  color:#7b1e1e;
+  margin-top: 4px;
+}
+
+.ceremony-date{
+  margin-top: 14px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color:#2b2b2b;
+}
+
+.big-day{
+  font-size: 42px;
+  font-weight: 900;
+  color:#7b1e1e;
+  display:inline-block;
+  margin: 0 10px;
+  line-height: 1;
+}
+
+.year{
+  font-weight: 900;
+  color:#7b1e1e;
+}
+
+.ceremony-lunar{
+  margin-top: 6px;
+  color:#555;
+}
+
+.map-wrap{
+  margin: 18px auto 0;
+  max-width: 980px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  background:#fff;
+}
+
+.map-wrap iframe{
+  display:block;
+  width:100%;
+  height: 420px;
+}
+
+.place-address{
+  text-align:center;
+  margin-top: 12px;
+  color:#444;
+}
+
+@media (max-width: 992px){
+  .avatar-wrap{ width: 220px; height: 220px; }
+}
+
+@media (max-width: 768px){
+  .couple-grid{ grid-template-columns: 1fr; }
+  .happy-title{ font-size: 46px; }
+  .map-wrap iframe{ height: 360px; }
+}
