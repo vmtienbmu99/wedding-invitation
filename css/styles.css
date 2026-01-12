@@ -11696,20 +11696,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 .bg-section-07 .bg-light{
   background: transparent !important;
 }
-.wedding-footer{
-  background: #f3e4d7;
-  text-align: center;
-  padding: 34px 16px;
-  font-family: "Dancing Script", cursive !important;
-  font-size: 36px;
-  font-weight: 700;
-  color: #2b2b2b;
-  margin-top: 30px;
-}
 
-@media (max-width: 768px){
-  .wedding-footer{ font-size: 26px; }
-}
 /* ===== NỀN ẢNH cho khu vực Sổ lưu bút + Mừng cưới (chắc chắn) ===== */
 #guestbook, #gift{
   position: relative;
@@ -11728,4 +11715,20 @@ section#contact form#contactForm :-ms-input-placeholder {
 #guestbook > .container, #gift > .container{
   position: relative;
   z-index: 1;
+}
+.wedding-footer{
+  background: #f3e4d7 !important;
+  text-align: center !important;
+  padding: 34px 16px !important;
+  font-family: "Dancing Script", cursive !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #2b2b2b !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px){
+  .wedding-footer{ font-size: 26px !important; }
 }
