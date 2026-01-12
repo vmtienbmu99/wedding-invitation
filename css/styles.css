@@ -11484,45 +11484,88 @@ section#contact form#contactForm :-ms-input-placeholder {
   .thumb{ width: 64px; height: 44px; }
   .viewer__stage{ padding: 70px 12px 150px; }
 }
-.guestbook-wrap{ max-width: 900px; margin: 0 auto; }
-.guestbook-form{
-  background:#fff; border-radius:16px; padding:22px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.10);
-  margin-bottom: 22px;
+/* ===== Guestbook (So Luu But) ===== */
+.gb-title{ color:#7b1e1e; letter-spacing:2px; }
+
+.gb-wrap{ max-width: 980px; margin: 0 auto; }
+
+.gb-card{
+  background:#fff;
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 18px 46px rgba(0,0,0,.10);
+  border: 1px solid rgba(0,0,0,.06);
 }
-.guestbook-form input, .guestbook-form textarea{
-  width:100%;
-  border: 1px solid #d9d9d9;
-  border-radius: 10px;
+
+.gb-row{
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 16px;
+}
+
+.gb-input, .gb-textarea{
+  width: 100%;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
   padding: 14px 14px;
-  margin-top: 12px;
   font-size: 16px;
   outline: none;
+  background: #fff;
 }
-.guestbook-form input:focus, .guestbook-form textarea:focus{
-  border-color:#7b1e1e;
-  box-shadow: 0 0 0 3px rgba(123,30,30,.12);
-}
-.guestbook-actions{ display:flex; justify-content:flex-end; margin-top: 14px; }
-.guestbook-actions button{
-  background:#7b1e1e; color:#fff; border:0;
-  padding: 12px 22px; border-radius: 999px;
-  font-weight: 800; letter-spacing: .3px;
-}
-.guestbook-actions button:disabled{ opacity:.6; cursor:not-allowed; }
-.guestbook-status{ margin-top:10px; color:#7b1e1e; font-weight:600; }
 
-.guestbook-list .wish{
-  background:#fff; border-radius: 14px;
+.gb-textarea{ resize: none; }
+
+.gb-input:focus, .gb-textarea:focus{
+  border-color:#7b1e1e;
+  box-shadow: 0 0 0 4px rgba(123,30,30,.12);
+}
+
+.gb-bottom{
+  margin-top: 14px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gb-status{
+  color:#7b1e1e;
+  font-weight: 700;
+  min-height: 22px;
+}
+
+.gb-btn{
+  background:#7b1e1e;
+  color:#fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  box-shadow: 0 10px 24px rgba(123,30,30,.22);
+}
+
+.gb-btn:hover{ filter: brightness(1.05); }
+.gb-btn:disabled{ opacity:.65; cursor:not-allowed; }
+
+.gb-list{ margin-top: 18px; }
+
+.gb-wish{
+  background:#fff;
+  border-radius: 14px;
   padding: 16px 18px;
   box-shadow: 0 12px 26px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.05);
   margin-bottom: 14px;
-  display:flex; gap: 14px; justify-content:space-between;
+  display:flex;
+  justify-content: space-between;
+  gap: 14px;
 }
-.wish .left{ min-width: 0; }
-.wish .name{ font-weight: 900; color:#7b1e1e; margin-bottom: 6px; }
-.wish .msg{ color:#444; }
-.wish .time{ color:#888; font-size: 13px; white-space: nowrap; margin-left: 12px; }
+
+.gb-wish .left{ min-width: 0; }
+.gb-wish .name{ font-weight: 900; color:#7b1e1e; margin-bottom: 6px; }
+.gb-wish .msg{ color:#444; line-height: 1.45; white-space: pre-wrap; }
+.gb-wish .time{ color:#888; font-size: 13px; white-space: nowrap; margin-left: 10px; }
 
 .gb-more{
   border: 1px solid #7b1e1e;
@@ -11530,5 +11573,9 @@ section#contact form#contactForm :-ms-input-placeholder {
   color:#7b1e1e;
   padding: 10px 18px;
   border-radius: 999px;
-  font-weight: 800;
+  font-weight: 900;
+}
+
+@media (max-width: 768px){
+  .gb-row{ grid-template-columns: 1fr; }
 }
