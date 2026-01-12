@@ -11902,3 +11902,5 @@ section#contact form#contactForm :-ms-input-placeholder {
   .happy-title{ font-size: 46px; }
   .map-wrap iframe{ height: 360px; }
 }
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 90px; } /* tránh bị navbar che tiêu đề */
